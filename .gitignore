@@ -1,0 +1,66 @@
+# Build
+bin/
+obj/
+
+# User-specific
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Test results
+TestResults/
+
+# Coverage
+coverage/
+coverage.cobertura.xml
+
+# NuGet
+*.nupkg
+.nuget/
+
+# EF Core
+Migrations/*.Designer.cs
+
+# Publish
+publish/
+
+# Docker
+docker-data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+
+# App settings
+appsettings.Development.json
+
+# Secrets
+secrets.json
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Sonar
+.sonarqube/
+
+# Temporary
+tmp/
+temp/

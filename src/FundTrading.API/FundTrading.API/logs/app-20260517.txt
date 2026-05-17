@@ -1,0 +1,42 @@
+[2026-05-17 19:31:33 INF] [CorrelationId: ] Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+[2026-05-17 19:31:33 INF] [CorrelationId: ] Quartz Scheduler created
+[2026-05-17 19:31:33 INF] [CorrelationId: ] JobFactory set to: Quartz.Simpl.MicrosoftDependencyInjectionJobFactory
+[2026-05-17 19:31:33 INF] [CorrelationId: ] RAMJobStore initialized.
+[2026-05-17 19:31:33 INF] [CorrelationId: ] Quartz Scheduler 3.18.1.0 - 'QuartzScheduler' with instanceId 'NON_CLUSTERED' initialized
+[2026-05-17 19:31:33 INF] [CorrelationId: ] Using thread pool 'Quartz.Simpl.DefaultThreadPool', size: 10
+[2026-05-17 19:31:33 INF] [CorrelationId: ] Using job store 'Quartz.Simpl.RAMJobStore', supports persistence: False, clustered: False
+[2026-05-17 19:31:33 INF] [CorrelationId: ] Adding 1 jobs, 1 triggers.
+[2026-05-17 19:31:33 INF] [CorrelationId: ] Adding job: DEFAULT.ProcessScheduledOrdersJob
+[2026-05-17 19:31:33 INF] [CorrelationId: ] Now listening on: https://localhost:7278
+[2026-05-17 19:31:33 INF] [CorrelationId: ] Now listening on: http://localhost:5142
+[2026-05-17 19:31:34 INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+[2026-05-17 19:31:34 INF] [CorrelationId: ] Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+[2026-05-17 19:31:34 INF] [CorrelationId: ] Hosting environment: Development
+[2026-05-17 19:31:34 INF] [CorrelationId: ] Content root path: C:\Users\brugu\source\repos\FundTrading\src\FundTrading.API\FundTrading.API
+[2026-05-17 19:31:35 INF] [CorrelationId: ] Request starting HTTP/2 GET https://localhost:7278/swagger/index.html - null null
+[2026-05-17 19:31:36 INF] [CorrelationId: ] Request finished HTTP/2 GET https://localhost:7278/swagger/index.html - 200 null text/html;charset=utf-8 574.0001ms
+[2026-05-17 19:31:36 INF] [CorrelationId: ] Request starting HTTP/2 GET https://localhost:7278/_framework/aspnetcore-browser-refresh.js - null null
+[2026-05-17 19:31:36 INF] [CorrelationId: ] Request starting HTTP/2 GET https://localhost:7278/_vs/browserLink - null null
+[2026-05-17 19:31:36 INF] [CorrelationId: ] Request finished HTTP/2 GET https://localhost:7278/_framework/aspnetcore-browser-refresh.js - 200 16515 application/javascript; charset=utf-8 44.0615ms
+[2026-05-17 19:31:36 INF] [CorrelationId: ] Request finished HTTP/2 GET https://localhost:7278/_vs/browserLink - 200 null text/javascript; charset=UTF-8 120.0018ms
+[2026-05-17 19:31:36 INF] [CorrelationId: ] Request starting HTTP/2 GET https://localhost:7278/swagger/v1/swagger.json - null null
+[2026-05-17 19:31:36 INF] [CorrelationId: ] Request finished HTTP/2 GET https://localhost:7278/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 32.5072ms
+[2026-05-17 19:32:19 INF] [CorrelationId: ] Request starting HTTP/2 POST https://localhost:7278/clientes - application/json 87
+[2026-05-17 19:32:19 INF] [CorrelationId: f772f562-79b2-4c87-a105-c5a5bebb2767] Executing endpoint 'FundTrading.API.Controllers.CustomerController.CreateCustomer (FundTrading.API)'
+[2026-05-17 19:32:19 INF] [CorrelationId: f772f562-79b2-4c87-a105-c5a5bebb2767] Route matched with {action = "CreateCustomer", controller = "Customer"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateCustomer(FundTrading.API.DTOs.CreateCustomerRequest, System.Threading.CancellationToken) on controller FundTrading.API.Controllers.CustomerController (FundTrading.API).
+[2026-05-17 19:32:19 WRN] [CorrelationId: f772f562-79b2-4c87-a105-c5a5bebb2767] You do not have a valid license key for the Lucky Penny software MediatR. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please visit https://luckypennysoftware.com to obtain a valid license.
+[2026-05-17 19:32:24 INF] [CorrelationId: f772f562-79b2-4c87-a105-c5a5bebb2767] Creating customer with document 3243252353
+[2026-05-17 19:32:27 INF] [CorrelationId: f772f562-79b2-4c87-a105-c5a5bebb2767] Executed DbCommand (83ms) [Parameters=[@__document_0='?' (Size = 11)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[AvailableBalance], [c].[CreatedAt], [c].[CreatedBy], [c].[Document], [c].[IsDeleted], [c].[Name], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Customers] AS [c]
+WHERE [c].[Document] = @__document_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+[2026-05-17 19:32:27 INF] [CorrelationId: f772f562-79b2-4c87-a105-c5a5bebb2767] Executed DbCommand (19ms) [Parameters=[@p0='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 11), @p4='?' (DbType = Boolean), @p5='?' (Size = 200), @p6='?' (DbType = DateTime2), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Customers] ([AvailableBalance], [CreatedAt], [CreatedBy], [Document], [IsDeleted], [Name], [UpdatedAt], [UpdatedBy])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+[2026-05-17 19:32:27 INF] [CorrelationId: f772f562-79b2-4c87-a105-c5a5bebb2767] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`3[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2026-05-17 19:32:27 INF] [CorrelationId: f772f562-79b2-4c87-a105-c5a5bebb2767] Executed action FundTrading.API.Controllers.CustomerController.CreateCustomer (FundTrading.API) in 8607.721ms
+[2026-05-17 19:32:27 INF] [CorrelationId: f772f562-79b2-4c87-a105-c5a5bebb2767] Executed endpoint 'FundTrading.API.Controllers.CustomerController.CreateCustomer (FundTrading.API)'
+[2026-05-17 19:32:27 INF] [CorrelationId: ] Request finished HTTP/2 POST https://localhost:7278/clientes - 200 null application/json; charset=utf-8 8729.2929ms
