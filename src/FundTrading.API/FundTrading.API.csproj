@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\FundTrading.Application\FundTrading.Application\FundTrading.Application.csproj" />
+    <ProjectReference Include="..\FundTrading.Application\FundTrading.Application.csproj" />
   </ItemGroup>
 
 </Project>

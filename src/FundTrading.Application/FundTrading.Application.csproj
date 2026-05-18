@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\FundTrading.Data\FundTrading.Data\FundTrading.Data.csproj" />
-    <ProjectReference Include="..\..\FundTrading.Domain\FundTrading.Domain\FundTrading.Domain.csproj" />
+    <ProjectReference Include="..\FundTrading.Data\FundTrading.Data.csproj" />
+    <ProjectReference Include="..\FundTrading.Domain\FundTrading.Domain.csproj" />
   </ItemGroup>
 
 </Project>
