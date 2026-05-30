@@ -1,29 +1,48 @@
 # Fund Trading API
 
-## Sobre o projeto
+## Overview
 
-O projeto Fund Trading API foi desenvolvido como solução para o case técnico proposto, com foco em:
+Fund Trading API is a backend application designed to manage investment fund operations, including subscriptions, redemptions, customer positions, and scheduled order processing.
 
-* Arquitetura limpa e organizada
-* Separação de responsabilidades
-* Processamento síncrono e assíncrono de ordens
-* Observabilidade e rastreabilidade
-* Facilidade de manutenção e evolução
-* Boas práticas de desenvolvimento backend com .NET
+The project was built with a strong focus on:
 
-A aplicação permite o gerenciamento de:
+- Clean Architecture
+- Separation of Concerns
+- Scalability
+- Maintainability
+- Observability
+- Testability
+- Backend development best practices using .NET
 
-* Clientes
-* Fundos de investimento
-* Ordens de aplicação e resgate
-* Processamento agendado de ordens
-* Controle de posição de cotas por cliente
+The application supports:
+
+- Customer management
+- Investment fund management
+- Subscription and redemption orders
+- Scheduled order execution
+- Customer share position tracking
 
 ---
 
-# Arquitetura da solução
+## Key Features
 
-A solução foi dividida em camadas visando desacoplamento e organização.
+- Clean Architecture
+- CQRS with MediatR
+- Entity Framework Core
+- Quartz.NET Scheduled Jobs
+- Repository Pattern
+- Unit of Work Pattern
+- Automatic Auditing
+- Structured Logging with Serilog
+- Correlation ID Tracking
+- Swagger / OpenAPI Documentation
+- Unit Testing with xUnit and Moq
+
+---
+
+# Solution Architecture
+
+The solution follows a layered architecture to promote maintainability, testability, and separation of concerns.
 
 ```text
 FundTrading.API
@@ -34,118 +53,113 @@ FundTrading.Data
 
 ## FundTrading.API
 
-Responsável por:
+Responsible for:
 
-* Controllers
-* Configuração da aplicação
-* Middlewares
-* Quartz Jobs
-* Swagger
-* Serilog
-* Dependency Injection
+- Controllers
+- Application configuration
+- Middleware registration
+- Quartz job configuration
+- Swagger setup
+- Serilog configuration
+- Dependency Injection
 
 ## FundTrading.Application
 
-Responsável por:
+Responsible for:
 
-* Commands
-* Command Handlers
-* Orquestração dos casos de uso
-* Regras de aplicação
-* Jobs orchestration
+- Commands
+- Command Handlers
+- Use Case orchestration
+- Application services
+- Scheduled job orchestration
 
-Foi utilizado CQRS com MediatR.
+CQRS is implemented using MediatR.
 
 ## FundTrading.Domain
 
-Responsável por:
+Responsible for:
 
-* Entidades
-* Enums
-* Interfaces
-* Regras de domínio
-* Objetos base
+- Entities
+- Enums
+- Interfaces
+- Domain rules
+- Base abstractions
 
 ## FundTrading.Data
 
-Responsável por:
+Responsible for:
 
-* Entity Framework Core
-* DbContext
-* Mapeamentos
-* Repositórios
-* Persistência de dados
-* Unit Of Work
-
----
-
-# Tecnologias utilizadas
-
-* .NET 8
-* ASP.NET Core
-* Entity Framework Core
-* SQL Server
-* MediatR
-* Quartz.NET
-* Serilog
-* Swagger
-* xUnit
-* Moq
+- Entity Framework Core
+- DbContext implementation
+- Entity mappings
+- Repositories
+- Data persistence
+- Unit of Work implementation
 
 ---
 
-# Padrões e decisões arquiteturais
+# Technology Stack
 
-## CQRS com MediatR
+- .NET 10
+- ASP.NET Core
+- Entity Framework Core
+- SQL Server
+- MediatR
+- Quartz.NET
+- Serilog
+- Swagger / OpenAPI
+- xUnit
+- Moq
 
-Foi utilizado CQRS para separar:
+---
 
-* Escrita de comandos
-* Execução de regras de negócio
+# Architectural Decisions
 
-Os handlers são responsáveis por executar os casos de uso.
+## CQRS with MediatR
+
+CQRS was adopted to separate command execution from business rule processing.
+
+Handlers are responsible for orchestrating application use cases and enforcing business workflows.
 
 ## Repository Pattern
 
-Os repositórios abstraem o acesso aos dados e centralizam consultas e persistência.
+Repositories abstract data access concerns and centralize persistence operations.
 
-## Unit Of Work
+## Unit of Work
 
-O DbContext implementa a interface `IUnitOfWork`, permitindo:
+The DbContext implements the `IUnitOfWork` interface, providing:
 
-* Controle transacional
-* Auditoria automática
-* Persistência centralizada
+- Transaction management
+- Centralized persistence
+- Consistent data operations
 
-## Auditoria automática
+## Automatic Auditing
 
-O sistema atualiza automaticamente:
+The system automatically updates the following fields during the commit process:
 
-* CreatedAt
-* UpdatedAt
-* CreatedBy
-* UpdatedBy
+- CreatedAt
+- UpdatedAt
+- CreatedBy
+- UpdatedBy
 
-Durante o `Commit()`.
+## Asynchronous Processing
 
-## Processamento assíncrono
+Quartz.NET is used to automatically process scheduled orders.
 
-Foi utilizado Quartz.NET para processamento automático de ordens agendadas.
+## Observability
 
-## Observabilidade
+The application includes:
 
-Foi implementado:
-
-* Serilog
-* CorrelationId
-* Logging estruturado
-* Middleware global de exceptions
+- Structured logging with Serilog
+- Correlation ID tracking
+- Global exception handling middleware
+- Log persistence to file
 
 ---
 
-# Fluxo principal da aplicação
+# Application Workflow
 
-## Criação de ordem
+## Order Creation
 
 ```text
 Controller
@@ -154,12 +168,12 @@ CreateFundOrderCommand
     ↓
 CreateFundOrderCommandHandler
     ↓
-Persistência da ordem
+Order Persistence
 ```
 
-## Execução imediata
+## Immediate Execution
 
-Ordens sem agendamento são executadas imediatamente:
+Orders without scheduling are executed immediately.
 
 ```text
 CreateFundOrderCommandHandler
@@ -169,9 +183,9 @@ ExecuteFundOrderCommand
 ExecuteFundOrderCommandHandler
 ```
 
-## Execução agendada
+## Scheduled Execution
 
-Ordens futuras:
+Future orders are processed automatically.
 
 ```text
 Quartz Job
@@ -185,77 +199,77 @@ ExecuteFundOrderCommandHandler
 
 ---
 
-# Regras implementadas
+# Business Rules
 
-## Aplicação
+## Subscription Orders
 
-* Validação de saldo
-* Validação de capacidade do fundo
-* Validação de valor mínimo
-* Atualização de posição do cliente
+- Available balance validation
+- Fund capacity validation
+- Minimum investment amount validation
+- Customer position update
 
-## Resgate
+## Redemption Orders
 
-* Validação de posição de cotas
-* Atualização da posição
-* Crédito em saldo
+- Share position validation
+- Position update
+- Balance credit processing
 
-## Agendamento
+## Scheduled Orders
 
-* Não permite datas passadas
-* Não permite data atual
-* Não permite finais de semana
+- Past dates are not allowed
+- Same-day scheduling is not allowed
+- Weekend scheduling is not allowed
 
-## Fundos
+## Investment Funds
 
-* Fundo deve estar aberto para operação
+- Funds must be open for trading
 
 ---
 
 # Logging
 
-Foi utilizado Serilog para centralização dos logs.
+Serilog is used as the centralized logging solution.
 
-Os logs possuem:
+Log entries include:
 
-* CorrelationId
-* Logs estruturados
-* Persistência em arquivo
-* Preparação para integração com Teams
-
----
-
-# Quartz.NET
-
-O Quartz é responsável pelo processamento automático de ordens agendadas.
-
-Configuração:
-
-* Segunda a sexta-feira
-* 09:00
-* Timezone São Paulo
+- Correlation ID
+- Structured logging
+- File persistence
+- Foundation for Microsoft Teams integration
 
 ---
 
-# Como executar o projeto
+# Scheduled Processing
 
-## Pré-requisitos
+Quartz.NET is responsible for processing scheduled orders automatically.
 
-* .NET 8 SDK
-* SQL Server
-* Visual Studio 2022 ou Rider
+Current schedule:
+
+- Monday to Friday
+- 09:00 AM
+- São Paulo Time Zone
 
 ---
 
-# Configuração do banco
+# Running the Application
 
-A connection string deve ser configurada em:
+## Prerequisites
+
+- .NET 10 SDK
+- SQL Server
+- Visual Studio 2026 or JetBrains Rider
+
+---
+
+## Database Configuration
+
+Configure the connection string in:
 
 ```text
 appsettings.Development.json
 ```
 
-Exemplo:
+Example:
 
 ```json
 {
@@ -267,7 +281,7 @@ Exemplo:
 
 ---
 
-# Executar migrations
+## Applying Migrations
 
 ```bash
 dotnet ef database update
@@ -275,7 +289,7 @@ dotnet ef database update
 
 ---
 
-# Executar aplicação
+## Running the Application
 
 ```bash
 dotnet run
@@ -283,93 +297,92 @@ dotnet run
 
 ---
 
-# Swagger
+## Swagger
 
-Ao executar a aplicação:
+After starting the application:
 
 ```text
-https://localhost:{porta}/swagger
+https://localhost:{port}/swagger
 ```
 
 ---
 
-# Testes unitários
+# Unit Tests
 
-Os testes unitários foram implementados utilizando:
+Unit tests were implemented using:
 
-* xUnit
-* Moq
+- xUnit
+- Moq
 
-Principais cenários cobertos:
+Main scenarios covered:
 
-* Aplicação com saldo suficiente
-* Aplicação sem saldo
-* Resgate com posição válida
-* Resgate sem posição
-* Rejeição de ordens
-* Execução de ordens
-
----
-
-# Melhorias futuras
-
-Possíveis evoluções:
-
-* Retry policies com Polly
-* Cache distribuído
-* Event Bus
-* Docker
-* Kubernetes
-* Health Checks
-* Testes de integração
-* Autenticação/autorização
+- Successful subscription
+- Insufficient balance
+- Successful redemption
+- Invalid redemption
+- Order rejection
+- Order execution
 
 ---
 
-# Desenho de Solução na Nuvem
+# Cloud Architecture
 
 ![Cloud Architecture](docs/images/cloud-architecture.png)
 
-# DER / MER
+---
+
+# Database Diagram
 
 ![Database Diagram](docs/images/database-diagram.png)
 
-# Uso de IA no Projeto
+---
 
-Durante o desenvolvimento do projeto, utilizei IA como ferramenta de apoio técnico e aceleração de desenvolvimento, principalmente para:
+# AI-Assisted Development
 
-* Estruturação inicial da arquitetura da solução
-* Discussões sobre boas práticas
-* Revisão de decisões arquiteturais
-* Geração inicial de código boilerplate
-* Apoio na criação de testes unitários
-* Sugestões de organização de projeto e nomenclaturas
-* Apoio na documentação técnica e README
-* Discussões sobre observabilidade, logging e resiliência
-* Auxílio na modelagem da arquitetura cloud e desenho da solução
+Artificial Intelligence was used as a productivity and technical assistance tool throughout the development process.
 
-A principal ferramenta utilizada foi o ChatGPT, atuando como um copiloto técnico para acelerar implementações repetitivas e permitir maior foco nas decisões arquiteturais e regras de negócio.
+Main use cases included:
 
-Apesar do apoio da IA, toda a modelagem da solução, validação das regras de negócio, revisão do código, ajustes arquiteturais e decisões técnicas foram conduzidas manualmente, incluindo:
+- Initial solution architecture structuring
+- Architectural discussions and reviews
+- Boilerplate code generation
+- Unit test support
+- Documentation assistance
+- Observability and resilience discussions
+- Cloud architecture design support
 
-* Estruturação das camadas da aplicação
-* Definição do fluxo de processamento de ordens
-* Uso de CQRS/MediatR
-* Estratégia de processamento assíncrono
-* Observabilidade com Serilog e CorrelationId
-* Ajustes e correções durante integração e testes
+The primary tool used was ChatGPT, acting as a technical copilot to accelerate repetitive tasks and allow greater focus on architectural decisions and business rules.
 
-A IA foi utilizada como ferramenta de produtividade e apoio técnico.
+Despite AI assistance, all business rules, architectural decisions, code reviews, solution modeling, and implementation adjustments were manually validated and implemented.
 
+---
 
-# Considerações finais
+# Roadmap
 
-A solução foi construída buscando equilíbrio entre:
+Potential future improvements:
 
-* Simplicidade
-* Organização
-* Escalabilidade
-* Clareza de código
-* Boas práticas
+- Retry policies with Polly
+- Distributed caching
+- Event Bus integration
+- Docker support
+- Kubernetes deployment
+- Health Checks
+- Integration Tests
+- Authentication and Authorization
+- Outbox Pattern
+- Domain Events
+- CI/CD Pipeline
 
-O objetivo foi entregar uma solução pragmática, mas preparada para evolução futura em ambiente corporativo.
+---
+
+# Final Considerations
+
+This solution was designed to balance:
+
+- Simplicity
+- Maintainability
+- Scalability
+- Readability
+- Software engineering best practices
+
+The goal was to deliver a pragmatic solution while keeping a solid foundation for future evolution in enterprise environments.
