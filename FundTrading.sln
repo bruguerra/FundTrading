@@ -1,27 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36811.4
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11822.322 stable
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Domain", "1-Domain", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Business", "2-Business", "{92483A27-8F1B-4B8F-A18F-BABD303A80D6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Infrastructure", "3-Infrastructure", "{1C8A72F7-76F8-47D7-96A0-EFD1311974F9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Presentation", "4-Presentation", "{BCCA660D-D741-41A0-BC83-66EC1EE0505F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-WebApps", "5-WebApps", "{2D63F5E6-A869-4F88-B664-2C760900ABED}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6-Tests", "6-Tests", "{2EEEB647-B3AA-423A-9B62-74916814A431}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundTrading.Domain", "src\FundTrading.Domain\FundTrading.Domain.csproj", "{6FFA8293-8CDC-08FD-CFE0-7492933004E5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundTrading.Application", "src\FundTrading.Application\FundTrading.Application.csproj", "{7F6B80D3-2972-476F-6722-F2CCD3539B2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundTrading.Data", "src\FundTrading.Data\FundTrading.Data.csproj", "{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundTrading.API", "src\FundTrading.API\FundTrading.API.csproj", "{F7E7EB5A-6C5A-3648-7933-67149F84DB20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundTrading.Data", "src\FundTrading.Data\FundTrading.Data.csproj", "{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundTrading.Tests", "src\FundTrading.Tests\FundTrading.Tests.csproj", "{B97F2148-E15F-D172-3E09-339CEEDC5D1D}"
 EndProject
@@ -39,14 +27,14 @@ Global
 		{7F6B80D3-2972-476F-6722-F2CCD3539B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F6B80D3-2972-476F-6722-F2CCD3539B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F6B80D3-2972-476F-6722-F2CCD3539B2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7E7EB5A-6C5A-3648-7933-67149F84DB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7E7EB5A-6C5A-3648-7933-67149F84DB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7E7EB5A-6C5A-3648-7933-67149F84DB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7E7EB5A-6C5A-3648-7933-67149F84DB20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B97F2148-E15F-D172-3E09-339CEEDC5D1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B97F2148-E15F-D172-3E09-339CEEDC5D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B97F2148-E15F-D172-3E09-339CEEDC5D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,13 +42,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{6FFA8293-8CDC-08FD-CFE0-7492933004E5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{7F6B80D3-2972-476F-6722-F2CCD3539B2E} = {92483A27-8F1B-4B8F-A18F-BABD303A80D6}
-		{F02ADC32-FCCD-8A52-C86C-93ECF99A87CE} = {1C8A72F7-76F8-47D7-96A0-EFD1311974F9}
-		{F7E7EB5A-6C5A-3648-7933-67149F84DB20} = {BCCA660D-D741-41A0-BC83-66EC1EE0505F}
-		{B97F2148-E15F-D172-3E09-339CEEDC5D1D} = {2EEEB647-B3AA-423A-9B62-74916814A431}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D4FF11E9-D58B-4ABA-A2B1-7F4C0DFD30F6}
